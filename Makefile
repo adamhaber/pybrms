@@ -16,6 +16,9 @@ test:
 pypi: dist
 	twine upload --repository pypi dist/*
 
+testpypi: dist
+	twine upload --repository testpypi dist/*
+
 dist: clean
 	python setup.py sdist bdist_wheel
 

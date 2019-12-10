@@ -57,10 +57,11 @@ setuptools.setup(
     url="https://github.com/{}/{}".format(cfg["user"], cfg["lib_name"]),
     packages=setuptools.find_packages(),
     include_package_data=True,
-    install_requires=requirements + ["numpy", "pandas", "pystan", "rpy2"],
+    install_requires=requirements
+    + ["pystan>=2.17", "numpy>=1.16", "rpy2>=3.1", "pandas>=0.24"],
     python_requires=">=" + cfg["min_python"],
-    long_description=open("README.md").read(),
-    long_description_content_type="text/markdown",
+    # long_description=open("README.md").read(),
+    # long_description_content_type="text/markdown",
     zip_safe=False,
     entry_points={"console_scripts": cfg.get("console_scripts", "").split()},
     **setup_cfg
