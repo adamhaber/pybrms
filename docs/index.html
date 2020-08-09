@@ -1,10 +1,12 @@
 ---
 
 title: pybrms 
+
 keywords: fastai
 sidebar: home_sidebar
 
 summary: "a pythonic interface for R's brms"
+description: "a pythonic interface for R's brms"
 ---
 <!--
 
@@ -17,10 +19,14 @@ summary: "a pythonic interface for R's brms"
 -->
 
 <div class="container" id="notebook-container">
+        
+    {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>brms is a fantastic R package that allows users to fit many kinds of Bayesian regression models - linear models, GLMs, survival analysis, etc - all in a multilevel context. Models are concisely specified using R's formula syntax, and the corresponding Stan program and data are automatically generated.</p>
@@ -31,26 +37,28 @@ summary: "a pythonic interface for R's brms"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Install">Install<a class="anchor-link" href="#Install">&#182;</a></h2><p>Install via pip:</p>
+<h2 id="Install">Install<a class="anchor-link" href="#Install"> </a></h2><p>Install via pip:</p>
 <p><code>pip install pybrms</code></p>
-<p>This installs the python package along with its pythonic dependencies; when you first call <a href="/pybrms.html"><code>pybrms</code></a>, it'll install <code>brms</code> and its dependencies. Don't worry if you don't have R or brms installed - they will be installed in your current virtual environment.</p>
+<p>This installs the python package along with its pythonic dependencies; when you first call <a href="/pybrms/pybrms"><code>pybrms</code></a>, it'll install <code>brms</code> and its dependencies. Don't worry if you don't have R or brms installed - they will be installed in your current virtual environment.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2>
+<h2 id="Example">Example<a class="anchor-link" href="#Example"> </a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's use pybrms to fit a poisson regression model, including an interaction term and by-patient varying intercept. <a href="/pybrms.html"><code>pybrms</code></a> can import all datasets that are included in <code>brms</code>:</p>
+<p>Let's use pybrms to fit a poisson regression model, including an interaction term and by-patient varying intercept. <a href="/pybrms/pybrms"><code>pybrms</code></a> can import all datasets that are included in <code>brms</code>:</p>
 
 </div>
 </div>
 </div>
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -64,6 +72,8 @@ summary: "a pythonic interface for R's brms"
 </div>
 
 </div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Fitting the model is as simple as it is in <code>brms</code>:</p>
@@ -71,6 +81,8 @@ summary: "a pythonic interface for R's brms"
 </div>
 </div>
 </div>
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -102,14 +114,18 @@ summary: "a pythonic interface for R's brms"
 </div>
 
 </div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The user can also specify a list of priors, a <code>family</code> argument (is it a gaussian regression, binomial, poisson, etc), and optional <code>pystan</code> arguments like the number of chains, samples, etc.</p>
-<p>When sampling is completed, <a href="/#fit"><code>fit</code></a> returns a <code>pystan</code> <code>StanFit4Model</code> object. The generated stan code is also available:</p>
+<p>When sampling is completed, <a href="/pybrms/core#fit"><code>fit</code></a> returns a <code>pystan</code> <code>StanFit4Model</code> object. The generated stan code is also available:</p>
 
 </div>
 </div>
 </div>
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -196,23 +212,25 @@ generated quantities {
 </div>
 
 </div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="How-it-works">How it works<a class="anchor-link" href="#How-it-works">&#182;</a></h2>
+<h2 id="How-it-works">How it works<a class="anchor-link" href="#How-it-works"> </a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Behind the scene, <a href="/pybrms.html"><code>pybrms</code></a> calls <code>brms</code> via <code>rpy2</code>, handling the python-to-R-objects transitions in both directions and making sure that Stan gets the dtypes it expects by parsing the model's data block.</p>
-<p>More specifically, <a href="/pybrms.html"><code>pybrms</code></a> calls two <code>brms</code> functions: <code>make_stancode</code> and <code>make_standata</code>, which are used to generate the appropriate model code, design matrices, etc. These are then "pulled back" to python and fed into <code>pystan</code>.</p>
+<p>Behind the scene, <a href="/pybrms/pybrms"><code>pybrms</code></a> calls <code>brms</code> via <code>rpy2</code>, handling the python-to-R-objects transitions in both directions and making sure that Stan gets the dtypes it expects by parsing the model's data block.</p>
+<p>More specifically, <a href="/pybrms/pybrms"><code>pybrms</code></a> calls two <code>brms</code> functions: <code>make_stancode</code> and <code>make_standata</code>, which are used to generate the appropriate model code, design matrices, etc. These are then "pulled back" to python and fed into <code>pystan</code>.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Adding-priors">Adding priors<a class="anchor-link" href="#Adding-priors">&#182;</a></h2>
+<h2 id="Adding-priors">Adding priors<a class="anchor-link" href="#Adding-priors"> </a></h2>
 </div>
 </div>
 </div>
@@ -223,6 +241,8 @@ generated quantities {
 </div>
 </div>
 </div>
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -254,6 +274,8 @@ generated quantities {
 </div>
 
 </div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Priors are passed as a list of tuples that conform to <code>brms</code> <code>set_prior</code> order of arguments - the first element is a Stan distribution, second is the class (b, Intercept, sd), third is coef, etc.</p>
@@ -263,7 +285,7 @@ generated quantities {
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Error-handling">Error handling<a class="anchor-link" href="#Error-handling">&#182;</a></h2>
+<h2 id="Error-handling">Error handling<a class="anchor-link" href="#Error-handling"> </a></h2>
 </div>
 </div>
 </div>
@@ -274,6 +296,8 @@ generated quantities {
 </div>
 </div>
 </div>
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -316,18 +340,18 @@ generated quantities {
 </span><span class="ansi-green-intense-fg ansi-bold">      5</span>                                           )
 
 <span class="ansi-green-fg">~/projects/pybrms/pybrms/pybrms.py</span> in <span class="ansi-cyan-fg">fit</span><span class="ansi-blue-fg">(formula, data, priors, family, sample_prior, sample, **pystan_args)</span>
-<span class="ansi-green-intense-fg ansi-bold">    126</span>         family<span class="ansi-blue-fg">=</span>family<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">    127</span>         priors<span class="ansi-blue-fg">=</span>brms_prior<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-fg">--&gt; 128</span><span class="ansi-red-fg">         </span>sample_prior<span class="ansi-blue-fg">=</span>sample_prior<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">    129</span>     )
-<span class="ansi-green-intense-fg ansi-bold">    130</span>     model_data <span class="ansi-blue-fg">=</span> _convert_R_to_python<span class="ansi-blue-fg">(</span>formula<span class="ansi-blue-fg">,</span> data<span class="ansi-blue-fg">,</span> family<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    128</span>         family<span class="ansi-blue-fg">=</span>family<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">    129</span>         priors<span class="ansi-blue-fg">=</span>brms_prior<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-fg">--&gt; 130</span><span class="ansi-red-fg">         </span>sample_prior<span class="ansi-blue-fg">=</span>sample_prior<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">    131</span>     )
+<span class="ansi-green-intense-fg ansi-bold">    132</span>     model_data <span class="ansi-blue-fg">=</span> _convert_R_to_python<span class="ansi-blue-fg">(</span>formula<span class="ansi-blue-fg">,</span> data<span class="ansi-blue-fg">,</span> family<span class="ansi-blue-fg">)</span>
 
 <span class="ansi-green-fg">~/projects/pybrms/pybrms/pybrms.py</span> in <span class="ansi-cyan-fg">get_stan_code</span><span class="ansi-blue-fg">(formula, data, priors, family, sample_prior)</span>
-<span class="ansi-green-intense-fg ansi-bold">     52</span>     <span class="ansi-green-fg">if</span> len<span class="ansi-blue-fg">(</span>priors<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">&gt;</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">     53</span>         return brms.make_stancode(
-<span class="ansi-green-fg">---&gt; 54</span><span class="ansi-red-fg">             </span>formula<span class="ansi-blue-fg">=</span>formula<span class="ansi-blue-fg">,</span> data<span class="ansi-blue-fg">=</span>data<span class="ansi-blue-fg">,</span> prior<span class="ansi-blue-fg">=</span>priors<span class="ansi-blue-fg">,</span> family<span class="ansi-blue-fg">=</span>family<span class="ansi-blue-fg">,</span> sample_prior<span class="ansi-blue-fg">=</span>sample_prior
-<span class="ansi-green-intense-fg ansi-bold">     55</span>         )[0]
-<span class="ansi-green-intense-fg ansi-bold">     56</span>     <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">     54</span>     <span class="ansi-green-fg">if</span> len<span class="ansi-blue-fg">(</span>priors<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">&gt;</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">     55</span>         return brms.make_stancode(
+<span class="ansi-green-fg">---&gt; 56</span><span class="ansi-red-fg">             </span>formula<span class="ansi-blue-fg">=</span>formula<span class="ansi-blue-fg">,</span> data<span class="ansi-blue-fg">=</span>data<span class="ansi-blue-fg">,</span> prior<span class="ansi-blue-fg">=</span>priors<span class="ansi-blue-fg">,</span> family<span class="ansi-blue-fg">=</span>family<span class="ansi-blue-fg">,</span> sample_prior<span class="ansi-blue-fg">=</span>sample_prior
+<span class="ansi-green-intense-fg ansi-bold">     57</span>         )[0]
+<span class="ansi-green-intense-fg ansi-bold">     58</span>     <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
 
 <span class="ansi-green-fg">~/miniconda3/envs/rpy/lib/python3.6/site-packages/rpy2/robjects/functions.py</span> in <span class="ansi-cyan-fg">__call__</span><span class="ansi-blue-fg">(self, *args, **kwargs)</span>
 <span class="ansi-green-intense-fg ansi-bold">    190</span>                 kwargs<span class="ansi-blue-fg">[</span>r_k<span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> v
@@ -367,6 +391,8 @@ generated quantities {
 </div>
 
 </div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This makes sure you can debug your data/formula/etc without actually leaving python.</p>
@@ -376,17 +402,19 @@ generated quantities {
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Visualization">Visualization<a class="anchor-link" href="#Visualization">&#182;</a></h2>
+<h2 id="Visualization">Visualization<a class="anchor-link" href="#Visualization"> </a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Since <a href="/pybrms.html"><code>pybrms</code></a> returns a <code>pystan</code> object, we can easily visualize the results using <code>arviz</code>:</p>
+<p>Since <a href="/pybrms/pybrms"><code>pybrms</code></a> returns a <code>pystan</code> object, we can easily visualize the results using <code>arviz</code>:</p>
 
 </div>
 </div>
 </div>
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -401,14 +429,30 @@ generated quantities {
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-2-c5d14f545f48&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-green-fg">import</span> arviz <span class="ansi-green-fg">as</span> az
+<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>inference_data <span class="ansi-blue-fg">=</span> az<span class="ansi-blue-fg">.</span>from_pystan<span class="ansi-blue-fg">(</span>model<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span> az<span class="ansi-blue-fg">.</span>plot_posterior<span class="ansi-blue-fg">(</span>inference_data<span class="ansi-blue-fg">,</span> var_names<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#39;b&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;Intercept&#39;</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">;</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;model&#39; is not defined</pre>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>{% include image.html file="imgs/az_post.png" %}</p>
+</div>
 
 </div>
 </div>
+
 </div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>For a more detailed walkthrough, see the accompanying <a href="link">blog post</a>.</p>

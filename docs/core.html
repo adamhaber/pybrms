@@ -1,10 +1,12 @@
 ---
 
-title: Title
+title: Documentation
+
 keywords: fastai
 sidebar: home_sidebar
 
-summary: "summary"
+
+
 ---
 <!--
 
@@ -17,22 +19,23 @@ summary: "summary"
 -->
 
 <div class="container" id="notebook-container">
+        
+    {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
+    {% endraw %}
+
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Documentation">Documentation<a class="anchor-link" href="#Documentation">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
+    {% endraw %}
 
-</div>
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 
 <div class="output_wrapper">
@@ -42,7 +45,7 @@ summary: "summary"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_brms_data" class="doc_header"><code>get_brms_data</code><a href="https://github.com/fastai/pybrms/tree/master/pybrms/pybrms.py#L26" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_brms_data</code>(<strong><code>dataset_name</code></strong>:<code>str</code>)</p>
+<h4 id="get_brms_data" class="doc_header"><code>get_brms_data</code><a href="https://github.com/adamhaber/pybrms/tree/master/pybrms/pybrms.py#L26" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_brms_data</code>(<strong><code>dataset_name</code></strong>:<code>str</code>)</p>
 </blockquote>
 <p>A helper function for importing different datasets included in brms.</p>
 
@@ -54,6 +57,10 @@ summary: "summary"
 </div>
 
 </div>
+    {% endraw %}
+
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -69,9 +76,17 @@ summary: "summary"
 </div>
 
 </div>
+    {% endraw %}
+
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
+    {% endraw %}
+
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -86,9 +101,17 @@ summary: "summary"
 </div>
 
 </div>
+    {% endraw %}
+
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
+    {% endraw %}
+
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 
 <div class="output_wrapper">
@@ -98,7 +121,7 @@ summary: "summary"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_stan_code" class="doc_header"><code>get_stan_code</code><a href="https://github.com/fastai/pybrms/tree/master/pybrms/pybrms.py#L47" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_stan_code</code>(<strong><code>formula</code></strong>:<code>str</code>, <strong><code>data</code></strong>:<code>Union</code>[<code>dict</code>, <code>DataFrame</code>], <strong><code>priors</code></strong>:<code>list</code>, <strong><code>family</code></strong>:<code>str</code>, <strong><code>sample_prior</code></strong>:<code>str</code>=<em><code>'no'</code></em>)</p>
+<h4 id="get_stan_code" class="doc_header"><code>get_stan_code</code><a href="https://github.com/adamhaber/pybrms/tree/master/pybrms/pybrms.py#L47" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_stan_code</code>(<strong><code>formula</code></strong>:<code>str</code>, <strong><code>data</code></strong>:<code>Union</code>[<code>dict</code>, <code>DataFrame</code>], <strong><code>priors</code></strong>:<code>list</code>, <strong><code>family</code></strong>:<code>str</code>, <strong><code>sample_prior</code></strong>:<code>str</code>=<em><code>'no'</code></em>)</p>
 </blockquote>
 
 </div>
@@ -109,15 +132,31 @@ summary: "summary"
 </div>
 
 </div>
+    {% endraw %}
+
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
+    {% endraw %}
+
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
+    {% endraw %}
+
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
+    {% endraw %}
+
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 
 <div class="output_wrapper">
@@ -127,7 +166,7 @@ summary: "summary"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="fit" class="doc_header"><code>fit</code><a href="https://github.com/fastai/pybrms/tree/master/pybrms/pybrms.py#L105" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>fit</code>(<strong><code>formula</code></strong>:<code>str</code>, <strong><code>data</code></strong>:<code>Union</code>[<code>dict</code>, <code>DataFrame</code>], <strong><code>priors</code></strong>:<code>list</code>=<em><code>[]</code></em>, <strong><code>family</code></strong>:<code>str</code>=<em><code>'gaussian'</code></em>, <strong><code>sample_prior</code></strong>:<code>str</code>=<em><code>'no'</code></em>, <strong><code>sample</code></strong>:<code>bool</code>=<em><code>'yes'</code></em>, <strong>**<code>pystan_args</code></strong>)</p>
+<h4 id="fit" class="doc_header"><code>fit</code><a href="https://github.com/adamhaber/pybrms/tree/master/pybrms/pybrms.py#L105" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>fit</code>(<strong><code>formula</code></strong>:<code>str</code>, <strong><code>data</code></strong>:<code>Union</code>[<code>dict</code>, <code>DataFrame</code>], <strong><code>priors</code></strong>:<code>list</code>=<em><code>[]</code></em>, <strong><code>family</code></strong>:<code>str</code>=<em><code>'gaussian'</code></em>, <strong><code>sample_prior</code></strong>:<code>str</code>=<em><code>'no'</code></em>, <strong><code>sample</code></strong>:<code>bool</code>=<em><code>'yes'</code></em>, <strong>**<code>pystan_args</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -138,6 +177,10 @@ summary: "summary"
 </div>
 
 </div>
+    {% endraw %}
+
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -151,6 +194,10 @@ summary: "summary"
 </div>
 
 </div>
+    {% endraw %}
+
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -180,6 +227,8 @@ Converted index.ipynb.
 </div>
 
 </div>
+    {% endraw %}
+
 </div>
  
 
