@@ -4,10 +4,10 @@ __all__ = ['get_brms_data', 'get_stan_code', 'fit']
 
 # Cell
 #hide
+import os
 import typing
 import pandas as pd
 import numpy as np
-import pystan
 import re
 
 import rpy2.robjects.packages as rpackages
@@ -98,6 +98,8 @@ def _coerce_types(stan_code, stan_data):
             stan_data[k] = v.astype(int)
         if v.size==1:
             stan_data[k] = stan_data[k][0]
+        if type(stan_data[k]).__module__ == 'numpy':
+            stan_data[k] = stan_data[k].tolist()
     return stan_data
 
 
@@ -109,6 +111,7 @@ def fit(
     family: str = "gaussian",
     sample_prior: str = "no",
     sample:bool = "yes",
+    backend: str= "pystan",
      **pystan_args,
 ):
     formula = brms.bf(formula)
@@ -132,9 +135,37 @@ def fit(
     model_data = _convert_R_to_python(formula, data, family)
     model_data = _coerce_types(model_code, model_data)
 
-    sm = pystan.StanModel(model_code=model_code)
-    if sample==False:
-        return sm
+    if backend == "cmdstanpy":
+        from cmdstanpy import CmdStanModel
+        import tempfile
+        with tempfile.TemporaryDirectory(prefix="pybrms_") as tmp_dir:
+            stan_file = os.path.join(tmp_dir, "stan_model.stan")
+            with open(stan_file, "w") as fh:
+                fh.write(model_code)
+            sm = CmdStanModel(stan_file=stan_file)
+            if sample==False:
+                return sm
+            else:
+                fit = sm.sample(data=model_data, **pystan_args)
+                return fit
+    elif backend == "pystan":
+        try:
+            # pystan 3
+            import stan
+            sm = stan.build(model_code, data=model_data)
+            if sample==False:
+                return sm
+            else:
+                fit = sm.sample(**pystan_args)
+                return fit
+        except ImportError:
+            # pystan 2
+            import pystan
+            sm = pystan.StanModel(model_code=model_code)
+            if sample==False:
+                return sm
+            else:
+                fit = sm.sampling(data=model_data, **pystan_args)
+                return fit
     else:
-        fit = sm.sampling(data=model_data, **pystan_args)
-        return fit
+        raise ValueError("Unsupported backend {}. Select from {'cmdstanpy', 'pystan'}".format(backend))
