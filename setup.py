@@ -58,7 +58,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     include_package_data=True,
     install_requires=requirements
-    + ["cmdstanpy", "numpy>=1.16", "rpy2>=3.1", "pandas>=0.24"],
+    + ["pystan>=2.17", "numpy>=1.16", "rpy2>=3.1", "pandas>=0.24"],
     python_requires=">=" + cfg["min_python"],
     # long_description=open("README.md").read(),
     # long_description_content_type="text/markdown",
