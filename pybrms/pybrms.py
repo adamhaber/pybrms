@@ -133,6 +133,11 @@ def fit(
     model_data = _convert_R_to_python(formula, data, family)
     model_data = _coerce_types(model_code, model_data)
 
+    for key, val in model_data.items():
+        if type(val).__module__ == 'numpy':
+            val = val.tolist()
+            model_data[key] = val
+
     if backend == "cmdstanpy":
         from cmdstanpy import CmdStanModel
         import tempfile
