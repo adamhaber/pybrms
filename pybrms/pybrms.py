@@ -168,4 +168,4 @@ def fit(
                 fit = sm.sampling(data=model_data, **pystan_args)
                 return fit
     else:
-        raise ValueError("Unsupported backend {}. Select from {'cmdstanpy', 'pystan'}".format(backend))
+        raise ValueError("Unsupported backend {}. Select from {{'cmdstanpy', 'pystan'}}".format(backend))
