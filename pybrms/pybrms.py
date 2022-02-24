@@ -110,8 +110,8 @@ def fit(
     family: str = "gaussian",
     sample_prior: str = "no",
     sample:bool = "yes",
-    model_kwargs: typing.Optional[dict] = None
-     **fit_kwargs,
+    model_kwargs: typing.Optional[dict] = None,
+     **fit_kwargs
 ):
     if priors is None:
         priors = []
