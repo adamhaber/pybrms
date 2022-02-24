@@ -7,7 +7,7 @@ __all__ = ['get_brms_data', 'get_stan_code', 'fit']
 import typing
 import pandas as pd
 import numpy as np
-import pystan
+import cmdstanpy
 import re
 
 import rpy2.robjects.packages as rpackages
@@ -104,13 +104,20 @@ def _coerce_types(stan_code, stan_data):
 # Cell
 def fit(
     formula: str,
+    stan_file: str,
     data: typing.Union[dict, pd.DataFrame],
-    priors: list = [],
+    priors: typing.Optional[list] = None,
     family: str = "gaussian",
     sample_prior: str = "no",
     sample:bool = "yes",
-     **pystan_args,
+    model_kwargs: typing.Optional[dict] = None,
+     **fit_kwargs
 ):
+    if priors is None:
+        priors = []
+    if model_kwargs is None:
+        model_kwargs = {}
+
     formula = brms.bf(formula)
     data = _convert_python_to_R(data)
 
@@ -132,9 +139,12 @@ def fit(
     model_data = _convert_R_to_python(formula, data, family)
     model_data = _coerce_types(model_code, model_data)
 
-    sm = pystan.StanModel(model_code=model_code)
+    with open(stan_file, "w") as f:
+        f.write(model_code)
+
+    sm = cmdstanpy.CmdStanModel(stan_file=stan_file, **model_kwargs)
     if sample==False:
         return sm
     else:
-        fit = sm.sampling(data=model_data, **pystan_args)
+        fit = sm.sample(data=model_data, **fit_kwargs)
         return fit

@@ -34,7 +34,7 @@ statuses = [
     "7 - Inactive",
 ]
 py_versions = (
-    "2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 3.0 3.1 3.2 3.3 3.4 3.5 3.6 3.7 3.8".split()
+    "2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 3.0 3.1 3.2 3.3 3.4 3.5 3.6 3.7 3.8 3.9 3.10".split()
 )
 
 requirements = cfg.get("requirements", "").split()
@@ -58,7 +58,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     include_package_data=True,
     install_requires=requirements
-    + ["pystan>=2.17", "numpy>=1.16", "rpy2>=3.1", "pandas>=0.24"],
+    + ["cmdstanpy", "numpy>=1.16", "rpy2>=3.1", "pandas>=0.24"],
     python_requires=">=" + cfg["min_python"],
     # long_description=open("README.md").read(),
     # long_description_content_type="text/markdown",
@@ -66,4 +66,3 @@ setuptools.setup(
     entry_points={"console_scripts": cfg.get("console_scripts", "").split()},
     **setup_cfg
 )
-
